@@ -17,7 +17,7 @@ export default function Home() {
     </aside>
     <main className='w-full h-full'>
       <div className="grid align-center justify-items-center">
-        <h1 className="font-bold my-10 text-white-100">
+        <h1 className="font-bold my-24 text-white-100">
           Acesse a sua conta
         </h1>
         <button className='flex items-center px-2 mb-3 rounded-md bg-white-100'>
