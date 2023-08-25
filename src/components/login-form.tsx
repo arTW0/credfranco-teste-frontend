@@ -15,7 +15,7 @@ export default function LoginForm() {
     <button className='items-center mt-2 mb-64 px-2 rounded-md bg-black-800 text-white-100 font-bold h-10 w-24 hover:bg-black-100'
       type="submit"
     >
-      {session ? 'Entrar' : 'Home Page'}
+      Entrar
     </button>
   )
 }

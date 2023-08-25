@@ -1,13 +1,14 @@
 import Image from 'next/image'
+import { getServerSession } from 'next-auth/next'
 
 import { options } from "../api/auth/[...nextauth]/options"
-import { getServerSession } from 'next-auth/next'
 
 import felizLogo from '../assets/logo-feliz-2.svg'
 
 import { AiOutlineUser as UserIcon } from 'react-icons/ai'
 import Footer from '@/components/footer'
 import { redirect } from 'next/navigation'
+import Customers from '../customers/[id]'
 
 export default async function Home() {
   const session = await getServerSession(options)
@@ -31,12 +32,7 @@ export default async function Home() {
     </header>
 
     <section className='flex flex-col items-center justify-center h-4/5'>
-      <h1 className='text-4xl font-bold text-red-700'>
-        Bem vindo ao sistema de gerenciamento de funcionários
-      </h1>
-      <p className='text-2xl text-red-700'>
-        Aqui você pode cadastrar, editar e excluir funcionários
-      </p>
+      <Customers customers={[]} />
     </section>
 
     <Footer />
