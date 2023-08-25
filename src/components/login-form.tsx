@@ -1,48 +1,21 @@
 'use client'
 
-import { Formik, Field, Form, FormikHelpers } from 'formik'
-
-interface Values {
-  email: string;
-  password: string;
-}
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 export default function LoginForm() {
-  return (
-    <Formik
-      initialValues={{
-        email: '',
-        password: '',
-      }}
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated: () => {
+      redirect('http://localhost:3000/api/auth/signin?callbackUrl=/home-page')
+    }
+  })
 
-      onSubmit={(
-        values: Values,
-        { setSubmitting }: FormikHelpers<Values>
-      ) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 500);
-      }}
+  return (
+    <button className='items-center mt-2 mb-64 px-2 rounded-md bg-black-800 text-white-100 font-bold h-10 w-24 hover:bg-black-100'
+      type="submit"
     >
-      <Form>
-        <Field
-          className='form-control flex items-center h-10 px-2 mt-3 rounded-md bg-white-100'
-          id="email"
-          name="email"
-          placeholder="Email"
-        />
-        <Field
-          className='form-control flex items-center h-10 mt-2 px-2 rounded-md bg-white-100'
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Senha"
-        />
-        <button className='items-center mt-2 px-2 rounded-md bg-black-800 text-white-100 font-bold h-10 w-24 hover:bg-black-100' type="submit">
-          Entrar
-        </button>
-      </Form>
-    </Formik>
+      {session ? 'Entrar' : 'Home Page'}
+    </button>
   )
 }

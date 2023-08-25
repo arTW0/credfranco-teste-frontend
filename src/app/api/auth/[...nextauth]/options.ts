@@ -20,10 +20,10 @@ export const options: NextAuthOptions = {
           label: 'Password:',
           type: 'password',
           placeholder: 'your-password'
-        }
+        },
       },
       async authorize(credentials) {
-        const user = { id: '25', name: 'Arthur', password: 'AnalogKid' }
+        const user = { id: '25', name: 'Arthur', password: 'AnalogKid', level: 'Manager' }
 
         if (credentials?.username === user.name && credentials?.password === user.password) {
           return user
