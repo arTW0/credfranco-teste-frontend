@@ -1,13 +1,15 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth/next'
 
 import { options } from "../api/auth/[...nextauth]/options"
 
 import felizLogo from '../assets/logos/logo-feliz-2.svg'
 
-import { AiOutlineUser as UserIcon } from 'react-icons/ai'
+import { BiLogOut as LogoutIcon } from 'react-icons/bi'
+
 import Footer from '@/components/footer'
-import { redirect } from 'next/navigation'
 import Customers from '../../components/customers'
 import Products from '@/components/products'
 
@@ -24,16 +26,17 @@ export default async function Home() {
       <h2 className='ml-24 text-white-100'>
         Boas vindas, <span className='font-bold'>{session.user?.name}</span>
       </h2>
-      <span className='flex items-center rounded-lg h-10 w-32 my-4 mx-16 bg-white-100'>
-        <UserIcon className='h-4/5 w-4/5 text-black-100' />
+      <Link href="/api/auth/signout" className='flex items-center rounded-lg h-10 w-24 my-4 mx-16 bg-white-100'>
+        <LogoutIcon className='h-4/5 w-4/5 text-black-100' />
         <p className='text-black-100 m-2 font-bold'>
-          {session.user?.name}
+          Sair
         </p>
-      </span>
+      </Link>
     </header>
     <div className='flex flex-col justify-center'>
       <Products />
       <Customers />
     </div>
+    <Footer />
   </main>
 }
