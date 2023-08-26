@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { options } from './api/auth/[...nextauth]/options'
 import { getServerSession } from 'next-auth'
 
-import googleLogo from './assets/google-icon.svg'
-import felizLogo from './assets/logo-feliz.svg'
+import googleLogo from './assets/logos/google-icon.svg'
+import felizLogo from './assets//logos/logo-feliz.svg'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import Footer from '@/components/footer'
@@ -35,9 +35,11 @@ export default async function Home() {
 
         {!session ?
           <>
-            <Link href={'http://localhost:3000/home-page'}>
-              Home Page
-            </Link>
+            <button>
+              <Link href={'http://localhost:3000/home-page'}>
+                Entrar
+              </Link>
+            </button>
           </>
           :
           <LoginForm />
