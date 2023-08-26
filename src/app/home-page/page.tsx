@@ -9,6 +9,7 @@ import { AiOutlineUser as UserIcon } from 'react-icons/ai'
 import Footer from '@/components/footer'
 import { redirect } from 'next/navigation'
 import Customers from '../../components/customers'
+import Products from '@/components/products'
 
 export default async function Home() {
   const session = await getServerSession(options)
@@ -21,7 +22,7 @@ export default async function Home() {
     <header className='flex place-content-between items-center bg-red-700'>
       <Image className='m-2 w-32' src={felizLogo} alt="logo" />
       <h2 className='ml-24 text-white-100'>
-        Boas vindas, <span className='font-bold'>{session ? session.user?.name : null}</span>
+        Boas vindas, <span className='font-bold'>{session.user?.name}</span>
       </h2>
       <span className='flex items-center rounded-lg h-10 w-32 my-4 mx-16 bg-white-100'>
         <UserIcon className='h-4/5 w-4/5 text-black-100' />
@@ -30,11 +31,9 @@ export default async function Home() {
         </p>
       </span>
     </header>
-
-    <section className='flex flex-col items-center justify-center h-4/5'>
+    <div className='flex flex-col justify-center'>
+      <Products />
       <Customers />
-    </section>
-
-    <Footer />
+    </div>
   </main>
 }
