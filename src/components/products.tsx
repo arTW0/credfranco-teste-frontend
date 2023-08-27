@@ -40,7 +40,7 @@ const productsList = [
   },
   {
     id: 5,
-    name: "Polvilho doce Yoki 500g",
+    name: "Polvilho Doce Yoki 500g",
     price: 'R$11,50',
     image: Polvilho,
   }
