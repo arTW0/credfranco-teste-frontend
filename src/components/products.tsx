@@ -28,7 +28,7 @@ const productsList = [
   },
   {
     id: 3,
-    name: "Azeite Andorinha Virgem 500ml",
+    name: "Azeite Andorinha 500ml",
     price: 'R$ 20,99',
     image: Azeite,
   },
@@ -74,6 +74,7 @@ export default function Products() {
     } catch (error: any) {
       console.log(error)
     }
+
   }
 
   return <div className="m-6">

@@ -56,7 +56,7 @@ export default function Customers() {
     </h1>
     <section className="flex space-x-32">
       <p className="text-lg ml-16">Nome </p>
-      <p className="text-lg pr-20 pl-2">Email</p>
+      <p className="text-lg pr-10">Email</p>
       <p className="ml-40">Telefone</p>
     </section>
     {customersList.map(customer => {
@@ -66,7 +66,7 @@ export default function Customers() {
           <p className="mr-1">{customer.first_name} </p>
           <p>{customer.last_name}</p>
         </div>
-        <div className="flex w-1/6">
+        <div className="flex mr-8 w-1/6">
           <p className="flex items-center">{customer.email}</p>
         </div>
         <div className="flex w-1/6">
