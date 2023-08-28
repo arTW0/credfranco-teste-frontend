@@ -12,6 +12,7 @@ import Leite from '../app/assets/products/leite.png'
 import Polvilho from '../app/assets/products/polvilho.png'
 import Biscoito from '../app/assets/products/biscoito.png'
 import { useState } from "react";
+import UploadFile from "./uploadfile";
 
 const productsList = [
   {
@@ -65,7 +66,7 @@ export default function Products() {
       const data = new FormData()
       data.set('file', file)
 
-      const response = await fetch('/api/products', {
+      const response = await fetch('/api/upload', {
         method: 'POST',
         body: data
       })
@@ -110,11 +111,7 @@ export default function Products() {
         onChange={(e) => { e.target.value = e.target.value.replace(/\D/g, '') }}
       />
 
-      <input
-        className="border-black-100"
-        type="file"
-        onChange={(e) => setFile(e.target.files?.[0])}
-      />
+      <UploadFile />
 
       <button className="bg-red-700 text-white-100 rounded-md h-10 w-40 hover:bg-red-800" type="submit">Adicionar</button>
     </form>
